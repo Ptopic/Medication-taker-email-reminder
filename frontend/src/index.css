@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-container {
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.input-container {
+  position: relative;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+.floating-label {
+  font-size: 16px;
+  color: #cccccc;
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 12px;
+  transition: all 0.1s ease;
+}
+
+.error-label {
+  position: absolute;
+  pointer-events: none;
+  top: -25px;
+  left: 0;
+  transition: all 0.1s ease;
+  font-size: 1.6rem;
+  color: #e53935;
+}
+
+.input {
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 1.5rem 1rem;
+}
+
+.input:focus {
+  border: 2px solid #1e88e5;
+  outline: none;
+}
+
+.error {
+  width: 100%;
+  font-size: 1.8rem;
+  padding: 1.5rem 1rem;
+  border: 2px solid #e53935;
+  outline: none;
+}
+
+.input:focus~.floating-label,
+.input:not(:focus):valid~.floating-label {
+  top: -25px;
+  bottom: 0px;
+  left: 0px;
+  font-size: 1.6rem;
+  opacity: 1;
+  color: #1e88e5;
+  transform: translateY(0);
+}
+
+button {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 3rem;
+  background-color: #1e88e5;
+  border: none;
+  outline: none;
+  border-radius: .4rem;
+}
+
+button p {
+  margin-right: 1rem;
+  color: white;
+}
+
+.loading-animation-container {
+  width: 50px;
+  height: 50px;
+}
