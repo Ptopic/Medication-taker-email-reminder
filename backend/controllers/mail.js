@@ -7,12 +7,12 @@ exports.sendEmail = async (req, res) => {
 
 	var today = new Date();
 	if (today.getMinutes() < 10) {
-		var todayTime = today.getHours() + ':' + '0' + today.getMinutes();
+		var todayTime = today.getHours() + 2 + ':' + '0' + today.getMinutes();
 	} else {
-		var todayTime = today.getHours() + ':' + today.getMinutes();
+		var todayTime = today.getHours() + 2 + ':' + today.getMinutes();
 	}
 
-	var newHour = Number(today.getHours()) + Number(time);
+	var newHour = Number(today.getHours() + 2) + Number(time);
 
 	if (newHour > 24) {
 		newHour = 0;
