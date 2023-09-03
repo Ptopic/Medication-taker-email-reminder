@@ -11,13 +11,19 @@ exports.sendEmail = async (req, res) => {
 		hour12: false,
 		timeZone: 'Europe/Zagreb',
 	});
-	if (today.getMinutes() < 10) {
-		var todayTime = today.getHours() + ':' + '0' + today.getMinutes();
-	} else {
-		var todayTime = today.getHours() + ':' + today.getMinutes();
+	var todayHour = Number(today.getHours() + 2);
+
+	if (todayHour > 24) {
+		todayHour = todayHour - 24;
 	}
 
-	var newHour = Number(today.getHours()) + Number(time);
+	if (today.getMinutes() < 10) {
+		var todayTime = todayHour + ':' + '0' + today.getMinutes();
+	} else {
+		var todayTime = todayHour + ':' + today.getMinutes();
+	}
+
+	var newHour = Number(today.getHours()) + Number(time) + 2;
 
 	if (newHour > 24) {
 		newHour = newHour - 24;
