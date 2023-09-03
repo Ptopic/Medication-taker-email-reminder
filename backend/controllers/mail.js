@@ -6,27 +6,38 @@ exports.sendEmail = async (req, res) => {
 	const { email, medication, time } = req.body;
 
 	var today = new Date();
+	today.toLocaleString('de-DE', {
+		hour: '2-digit',
+		hour12: false,
+		timeZone: 'Europe/Zagreb',
+	});
 	if (today.getMinutes() < 10) {
-		var todayTime = today.getHours() + 2 + ':' + '0' + today.getMinutes();
+		var todayTime = today.getHours() + ':' + '0' + today.getMinutes();
 	} else {
-		var todayTime = today.getHours() + 2 + ':' + today.getMinutes();
+		var todayTime = today.getHours() + ':' + today.getMinutes();
 	}
 
-	var newHour = Number(today.getHours() + 2) + Number(time);
+	var newHour = Number(today.getHours()) + Number(time);
 
 	if (newHour > 24) {
-		newHour = 0;
+		newHour = newHour - 24;
 	}
 
 	if (today.getMinutes() < 10) {
-		console.log('True');
 		var newTime = newHour + ':' + '0' + today.getMinutes();
 	} else {
 		var newTime = newHour + ':' + today.getMinutes();
 	}
 
-	console.log(newTime);
+	newTime.toLocaleString('de-DE', {
+		hour: '2-digit',
+		hour12: false,
+		timeZone: 'Europe/Zagreb',
+	});
+
+	console.log(todayTime);
 	console.log(newHour);
+	console.log(newTime);
 	const mailOptions = {
 		from: 'email@email.com',
 		to: email,
