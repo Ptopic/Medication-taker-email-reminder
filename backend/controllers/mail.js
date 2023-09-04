@@ -5,6 +5,13 @@ const { mailTransport, templateHtml } = require('../utils/mail');
 exports.sendEmail = async (req, res) => {
 	const { email, medication, time } = req.body;
 
+	const date = new Date();
+
+	const year = date.getFullYear();
+	const month = date.getMonth() + 1;
+	const day = date.getDate();
+
+	const dateString = `${day}.${month}.${year}`;
 	var today = new Date();
 	today.toLocaleString('de-DE', {
 		hour: '2-digit',
@@ -47,7 +54,7 @@ exports.sendEmail = async (req, res) => {
 	const mailOptions = {
 		from: 'email@email.com',
 		to: email,
-		subject: `You drank ${medication} at - ${todayTime}`,
+		subject: `${dateString}: You drank ${medication} at - ${todayTime}`,
 		html: templateHtml(medication, newTime),
 	};
 	mailTransport().sendMail(mailOptions, function (err, info) {
